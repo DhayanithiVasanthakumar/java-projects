@@ -1,0 +1,14 @@
+CREATE TABLE emp_details(
+emp_id INT NOT NULL,
+emp_name VARCHAR(50),
+emp_salary DOUBLE PRECISION,
+emp_age INT,
+emp_mobileno VARCHAR(10),
+emp_email VARCHAR(100)
+);
+
+
+SELECT * FROM emp_details;
+
+
+DROP TABLE emp_details;
