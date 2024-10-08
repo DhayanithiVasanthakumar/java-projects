@@ -1,0 +1,15 @@
+/*
+SERIAL -> auto increment
+*/
+CREATE TABLE student_details(rollNum  INT PRIMARY KEY  ,
+studentName VARCHAR(100),
+collegeName VARCHAR(100),
+City VARCHAR(50),
+/*
+DOUBLE PRECISION -> Double data type 
+*/
+Percentage DOUBLE PRECISION
+);
+
+
+SELECT * FROM student_details;
