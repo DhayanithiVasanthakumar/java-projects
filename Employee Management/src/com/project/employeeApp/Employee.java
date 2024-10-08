@@ -7,6 +7,7 @@ public class Employee {
 	private double salary;
 	private int age;
 	
+	
 	/*
 	 * constructor
 	 */
