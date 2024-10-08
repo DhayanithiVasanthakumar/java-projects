@@ -14,7 +14,8 @@ public class Main {
 		int id;
 		double salary;
 		int age;
-		
+		String mobileNo;
+		String email;
 		
 		/*
 		 * for access methods
@@ -49,6 +50,12 @@ public class Main {
 				
 				System.out.println("Enter Age: ");
 				 age=in.nextInt();
+				 
+				 System.out.println("Enter mobile Number: ");
+				 mobileNo=in.next();
+				 
+				 System.out.println("Enter email: ");
+				 email=in.next();
 				
 				/*
 				 * input ah vanganathu alla Employee class la obj muliyam ah antha method la irukara 
@@ -58,6 +65,8 @@ public class Main {
 				emp.setName(name);
 				emp.setSalary(salary);
 				emp.setAge(age);
+				emp.setMobileNo(mobileNo);
+				emp.setEmail(email);
 				
 				dao.createEmployee(emp);
 				break;
@@ -73,10 +82,44 @@ public class Main {
 				System.out.println("Enter Employee ID to update: ");
 				id=in.nextInt();
 				
-				System.out.println("Enter new Name: ");
-				name=in.next();
-				dao.updateEmployee(id, name);
+				System.out.println("Enter your choice: ");
+				System.out.println("1.Name\n2.salary\n3.age\n4.mobileno\n5.email");
+				
+				int updateChoice=in.nextInt();
+				
+				switch(updateChoice) {
+				case 1:
+					System.out.println("Enter new Name: ");
+					name=in.next();
+					dao.updateEmployeeName(id, name);
+					break;
+				case 2:
+					System.out.println("Enter new salary: ");
+					salary=in.nextDouble();
+					dao.updateEmployeeSalary(id, salary);
+					break;
+				case 3:
+					System.out.println("Enter new age: ");
+					age=in.nextInt();
+					dao.updateEmployeeAge(id, age);
+					break;
+				case 4:
+					System.out.println("Enter new mobileno: ");
+					mobileNo=in.next();
+					dao.updateEmployeeMobileNo(id, mobileNo);
+					break;
+				case 5:
+					System.out.println("Enter new email: ");
+					email=in.next();
+					dao.updateEmployeeEmail(id, email);
+					break;
+				default:
+					System.out.println("enter valid choice!!");
+					break;
+				}
+				
 				break;
+				
 			case 5:
 				System.out.println("Enter employee id to delete: ");
 				id=in.nextInt();

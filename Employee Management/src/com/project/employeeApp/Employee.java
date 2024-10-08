@@ -6,7 +6,8 @@ public class Employee {
 	private String name;
 	private double salary;
 	private int age;
-	
+	private String mobileno;
+	private String email;
 	
 	/*
 	 * constructor
@@ -15,11 +16,13 @@ public class Employee {
 		
 	}
 	
-	public Employee(int id,String name,double salary,int age) {
+	public Employee(int id,String name,double salary,int age,String mobileno,String email) {
 		this.id=id;
 		this.name=name;
 		this.salary=salary;
 		this.age=age;
+		this.mobileno=mobileno;
+		this.email=email;
 		}
 	
 	
@@ -58,6 +61,23 @@ public class Employee {
 		this.age=age;
 	}
 	
+	
+	public String getMoblieNo() {
+		return mobileno;
+	}
+	public void setMobileNo(String mobileno) {
+		this.mobileno=mobileno;
+	}
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email=email;
+	}
+	
+	
 	/*
 	 * override toString()
 	 */
@@ -66,6 +86,8 @@ public class Employee {
 		return "ID: "+id+
 				"\nNAME: "+name+
 				"\nSALARY: "+salary+
-				"\nAGE: "+age;
+				"\nAGE: "+age+
+				"\nMobileNo: "+mobileno+
+				"\nEmail: "+email;
 	}
 }
