@@ -36,17 +36,6 @@ VALUES(1,'test','test',2);
 */
 SELECT * FROM books;
 
-DROP TABLE books;
-
-DELETE FROM books WHERE id=5  ;
-
-
-
-
-
-
-
-
 
 
 
