@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.util.Scanner;
 
 import com.project.service.BookService;
+import com.project.service.StudentService;
 import com.project.dao.*;
 
 public class AdminMenu {
 	Scanner in;
 	
 	BookService bookServiceObj=new BookService();
+	StudentService studentServiceObj=new StudentService();
 	
 	public void displayAdminMenu(Connection adminCon) {
 		in=new Scanner(System.in);
@@ -58,7 +60,7 @@ public class AdminMenu {
 			break;
 		case 6:
 			//Register the Student
-			
+			studentServiceObj.addStudent(adminCon);
 			break;
 		case 7:
 			//Show All Registered Students
