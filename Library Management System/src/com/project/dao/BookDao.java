@@ -1,12 +1,15 @@
 package com.project.dao;
 
 import com.project.dto.*;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 /*
@@ -181,6 +184,9 @@ public class BookDao {
 	//........................................................................................
 
 	
+	//........................................................................................
+
+	
 	/*
 	 * show all books
 	 */
@@ -236,6 +242,9 @@ public class BookDao {
 	//........................................................................................
 
 	
+	
+	//........................................................................................
+
 	/*
 	 * upgrade the book quantity
 	 */
@@ -264,10 +273,10 @@ public class BookDao {
 	 * upgrade name of the book
 	 */
 	
-	public void upgradeBookName(Connection upgradeQuantityCon,Book updateBookNameObj) {
+	public void upgradeBookName(Connection upgradeBookCon,Book updateBookNameObj) {
 		String query="UPDATE books SET NAME=? WHERE s_no=?";
 		
-		try(PreparedStatement pst=upgradeQuantityCon.prepareStatement(query)){
+		try(PreparedStatement pst=upgradeBookCon.prepareStatement(query)){
 			pst.setString(1, updateBookNameObj.getBookName());
 			pst.setInt(2, updateBookNameObj.getSerialNo());
 			
@@ -287,10 +296,10 @@ public class BookDao {
 	/*
 	 * upgrade author name of book
 	 */
-	public void upgradeAuthorName(Connection upgradeQuantityCon,Book updateAuthorNameObj) {
+	public void upgradeAuthorName(Connection upgradeAuthorCon,Book updateAuthorNameObj) {
 		String query="UPDATE books SET author_name=? WHERE s_no=?";
 		
-		try(PreparedStatement pst=upgradeQuantityCon.prepareStatement(query)){
+		try(PreparedStatement pst=upgradeAuthorCon.prepareStatement(query)){
 			pst.setString(1, updateAuthorNameObj.getAuthorName());
 			pst.setInt(2, updateAuthorNameObj.getSerialNo());
 			
@@ -312,12 +321,34 @@ public class BookDao {
 	
 	
 	
+	//........................................................................................
+
+	/*
+	 * delete book
+	 */
 	
+	public boolean deleteBook(Connection deleteBookCon,int sno) {
+		boolean flag = false;
+		String query="DELETE FROM books WHERE s_no= "+sno;
+		
+		try(PreparedStatement pst = deleteBookCon.prepareStatement(query);){
+			
+			
+			pst.executeUpdate();
+			
+
+			flag = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return flag;
+	}
 	
+	//........................................................................................
+
 	
-	
-	
-	
-	
-	
+	//........................................................................................
+
 }

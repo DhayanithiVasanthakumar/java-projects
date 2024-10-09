@@ -18,11 +18,12 @@ public class AdminMenu {
 		System.out.println("********************************");
 		System.out.println("1. Search a Book");
 		System.out.println("2. Add new Book");
-		System.out.println("3. Update Book Details");
-		System.out.println("4. Show All Books");
-		System.out.println("5. Register the Student");
-		System.out.println("6. Show All Registered Students");
-		System.out.println("7. Exit From Application");
+		System.out.println("3. Delete Book");
+		System.out.println("4. Update Book Details");
+		System.out.println("5. Show All Books");
+		System.out.println("6. Register the Student");
+		System.out.println("7. Show All Registered Students");
+		System.out.println("8. Exit From Application");
 		System.out.println("********************************");
 		
 		System.out.println("Enter your Choice: ");
@@ -43,22 +44,27 @@ public class AdminMenu {
 			bookServiceObj.addBook(adminCon);
 			break;
 		case 3:
+			//delete book
+			bookServiceObj.deleteBook(adminCon);
+			break;
+			
+		case 4:
 			//Upgrade Quantity of Book
 			bookServiceObj.updateBooks(adminCon);
 			break;
-		case 4:
+		case 5:
 			//Show All Books
 			bookServiceObj.showAllBooks(adminCon);
 			break;
-		case 5:
+		case 6:
 			//Register the Student
 			
 			break;
-		case 6:
+		case 7:
 			//Show All Registered Students
 			
 			break;
-		case 7:
+		case 8:
 			//Exit From Application
 			System.out.println("Thankyou for using Library Mangement System");
 			break;
@@ -66,7 +72,7 @@ public class AdminMenu {
 			System.out.println("Please enter valid option!");
 			break;
 		}
-		}while(choice != 7);
+		}while(choice != 8);
 	}
 	
 	

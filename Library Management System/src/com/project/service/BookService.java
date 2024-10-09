@@ -11,6 +11,10 @@ public class BookService {
 
 	Scanner in =new Scanner(System.in);
 	
+	
+
+//--------------------------------------------------------------------------------------------------	
+
 	/*
 	 * for search by serial no
 	 */
@@ -91,6 +95,11 @@ public class BookService {
 		}
 	}
 	
+//--------------------------------------------------------------------------------------------------	
+
+	
+//--------------------------------------------------------------------------------------------------	
+
 	
 	
 	/*
@@ -138,11 +147,13 @@ public class BookService {
 			bookInput.setAuthorName(authorName);
 			bookInput.setQuantity(quantity);
 			
-			bd.saveBook(addBookCon, bookInput);
-			
-		
+			bd.saveBook(addBookCon, bookInput);	
 	}
 	
+//--------------------------------------------------------------------------------------------------	
+
+	
+//--------------------------------------------------------------------------------------------------	
 	
 	/*
 	 * case 4 --> show all books
@@ -167,8 +178,11 @@ public class BookService {
 			
 		}
 	}
+//--------------------------------------------------------------------------------------------------	
+
 	
 	
+//--------------------------------------------------------------------------------------------------	
 	
 	/*
 	 * for updateBooks method
@@ -282,5 +296,48 @@ public class BookService {
 			
 			}
 	}
+//--------------------------------------------------------------------------------------------------
+	
+	
+	
+//--------------------------------------------------------------------------------------------------
+
+	/*
+	 * delete book
+	 */
+	
+	public void deleteBook(Connection deleteBookCon) {
+		
+		
+		System.out.println("Enter sno of book");
+		int sno = in.nextInt();
+
+		BookDao bd = new BookDao();
+		// bd obj Return Book class
+		Book book = bd.getBookBySerialNo(deleteBookCon, sno);
+
+		if (book == null) {
+			System.out.println("Book not available");
+			return;
+		}
+		
+		System.out.println("Enter book ID to delete: ");
+		int delBookId = in.nextInt();
+
+		boolean delResult = bd.deleteBook(deleteBookCon, delBookId);
+
+		if (delResult) {
+			System.out.println("Book deleted sucessfully...");
+		} else {
+			System.out.println("Something went Wrong! Please try again");
+		}
+	}
+	
+	
+//--------------------------------------------------------------------------------------------------
+
+	
+//--------------------------------------------------------------------------------------------------
+
 	
 }
