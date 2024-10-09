@@ -1,12 +1,12 @@
-package com.project.login;
+package com.project.service;
 
 import java.sql.Connection;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.project.dao.DatabaseConnection;
 import com.project.dao.LoginDao;
+import com.project.database.DatabaseConnection;
 import com.project.menu.*;
 
 public class LoginService {

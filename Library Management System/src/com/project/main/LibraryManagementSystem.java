@@ -1,6 +1,6 @@
 package com.project.main;
 
-import com.project.login.LoginService;
+import com.project.service.LoginService;
 
 public class LibraryManagementSystem {
 

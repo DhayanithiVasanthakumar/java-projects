@@ -5,6 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+//Dao la queryMethod write panuvanga
+//Service la method write panuvanga
+
+/*
+ * eg:
+ * //LoginDao vanthu LoginService 
+ */
+
 public class LoginDao {
 
 	public String doLogin(Connection loginCon,String userName,String password) {
