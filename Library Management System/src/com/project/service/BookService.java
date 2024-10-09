@@ -171,41 +171,116 @@ public class BookService {
 	
 	
 	/*
-	 * case 3 -> update book
+	 * for updateBooks method
 	 */
-	
-	
-	public void updateBookQuantity(Connection addBookCon) {
 
-		
+	//update book name
+	public void updateBookName(Connection updateBookNameCon) {
+
 		System.out.println("Enter sno of book");
-		int sno=in.nextInt();
-		
-		
-		BookDao bd=new BookDao();
-		//bd obj Return Book class 
-		Book book=bd.getBookBySerialNo(addBookCon, sno);
-		
-		if(book == null) {
+		int sno = in.nextInt();
+
+		BookDao bd = new BookDao();
+		// bd obj Return Book class
+		Book book = bd.getBookBySerialNo(updateBookNameCon, sno);
+
+		if (book == null) {
 			System.out.println("Book not available");
 			return;
 		}
-		
+
+		System.out.println("Enter new name of book");
+		String newName = in.next();
+
+		Book bookInput = new Book();
+		bookInput.setSerialNo(book.getSerialNo());
+		bookInput.setBookName(newName);
+
+		bd.upgradeBookName(updateBookNameCon, bookInput);
+
+	}
+
+//update author name
+	public void updateAuthorName(Connection updateAuthorNameCon) {
+
+		System.out.println("Enter sno of book");
+		int sno = in.nextInt();
+
+		BookDao bd = new BookDao();
+		// bd obj Return Book class
+		Book book = bd.getBookBySerialNo(updateAuthorNameCon, sno);
+
+		if (book == null) {
+			System.out.println("Book not available");
+			return;
+		}
+
+		System.out.println("Enter new Author nameof book");
+		String newAuthorName = in.next();
+
+		Book bookInput = new Book();
+		bookInput.setSerialNo(book.getSerialNo());
+		bookInput.setAuthorName(newAuthorName);
+
+		bd.upgradeAuthorName(updateAuthorNameCon, bookInput);
+
+	}
+
+	// update quantity
+	public void updateBookQuantity(Connection updateBookQuantityCon) {
+
+		System.out.println("Enter sno of book");
+		int sno = in.nextInt();
+
+		BookDao bd = new BookDao();
+		// bd obj Return Book class
+		Book book = bd.getBookBySerialNo(updateBookQuantityCon, sno);
+
+		if (book == null) {
+			System.out.println("Book not available");
+			return;
+		}
+
 		System.out.println("Enter number of books to be Added");
-		int quantity=in.nextInt();
-		
-		
-		
-			Book bookInput=new Book();
-			bookInput.setSerialNo(book.getSerialNo());
-			bookInput.setQuantity(book.getQuantity()+quantity);
-			
-			bd.upgradeQuantity(addBookCon, bookInput);
-			
-		
+		int quantity = in.nextInt();
+
+		Book bookInput = new Book();
+		bookInput.setSerialNo(book.getSerialNo());
+		bookInput.setQuantity(book.getQuantity() + quantity);
+
+		bd.upgradeQuantity(updateBookQuantityCon, bookInput);
+
 	}
 	
-	
-	
+	/*
+	 *case 3 ->  update 
+	 */
+	public void updateBooks(Connection updateBooksCon) {
+		
+		BookService bs=new BookService();
+			System.out.println("1.Book name: ");
+			System.out.println("2.Book author Name: ");
+			System.out.println("3.Book Quantity: ");
+			
+			System.out.println("Please enter your choice");
+			int choice=in.nextInt();
+			
+			switch(choice) {
+			case 1:
+				//
+				bs.updateBookName(updateBooksCon);
+				break;
+			case 2:
+				//
+				bs.updateAuthorName(updateBooksCon);
+				break;
+			case 3:
+				bs.updateBookQuantity(updateBooksCon);
+			default:
+				System.out.println("Enter valid choice");
+				break;
+			
+			}
+	}
 	
 }

@@ -250,9 +250,56 @@ public class BookDao {
 			int row=pst.executeUpdate();
 			
 			if(row>0) {
-				System.out.println("Book updated Sucessfully");
+				System.out.println("Book quantity updated Sucessfully");
 			}else {
-				System.out.println("Failed to update book");
+				System.out.println("Failed to update book quantity");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * upgrade name of the book
+	 */
+	
+	public void upgradeBookName(Connection upgradeQuantityCon,Book updateBookNameObj) {
+		String query="UPDATE books SET NAME=? WHERE s_no=?";
+		
+		try(PreparedStatement pst=upgradeQuantityCon.prepareStatement(query)){
+			pst.setString(1, updateBookNameObj.getBookName());
+			pst.setInt(2, updateBookNameObj.getSerialNo());
+			
+			int row=pst.executeUpdate();
+			
+			if(row>0) {
+				System.out.println("Book name updated Sucessfully");
+			}else {
+				System.out.println("Failed to update book name");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * upgrade author name of book
+	 */
+	public void upgradeAuthorName(Connection upgradeQuantityCon,Book updateAuthorNameObj) {
+		String query="UPDATE books SET author_name=? WHERE s_no=?";
+		
+		try(PreparedStatement pst=upgradeQuantityCon.prepareStatement(query)){
+			pst.setString(1, updateAuthorNameObj.getAuthorName());
+			pst.setInt(2, updateAuthorNameObj.getSerialNo());
+			
+			int row=pst.executeUpdate();
+			
+			if(row>0) {
+				System.out.println("Author name updated Sucessfully");
+			}else {
+				System.out.println("Failed to update author name");
 			}
 			
 		} catch (SQLException e) {
@@ -261,8 +308,7 @@ public class BookDao {
 	}
 	
 	
-	
-	
+	//...............................................................................................
 	
 	
 	

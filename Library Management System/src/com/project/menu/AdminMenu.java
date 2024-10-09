@@ -18,7 +18,7 @@ public class AdminMenu {
 		System.out.println("********************************");
 		System.out.println("1. Search a Book");
 		System.out.println("2. Add new Book");
-		System.out.println("3. Upgrade Quantity of Book");
+		System.out.println("3. Update Book Details");
 		System.out.println("4. Show All Books");
 		System.out.println("5. Register the Student");
 		System.out.println("6. Show All Registered Students");
@@ -44,7 +44,7 @@ public class AdminMenu {
 			break;
 		case 3:
 			//Upgrade Quantity of Book
-			bookServiceObj.updateBookQuantity(adminCon);
+			bookServiceObj.updateBooks(adminCon);
 			break;
 		case 4:
 			//Show All Books
