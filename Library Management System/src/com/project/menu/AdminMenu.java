@@ -48,7 +48,7 @@ public class AdminMenu {
 			break;
 		case 4:
 			//Show All Books
-			
+			bookServiceObj.showAllBooks(adminCon);
 			break;
 		case 5:
 			//Register the Student

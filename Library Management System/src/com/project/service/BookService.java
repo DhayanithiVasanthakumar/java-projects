@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.sql.Connection;
+import java.util.List;
 import java.util.Scanner;
 
 import com.project.dao.BookDao;
@@ -143,6 +144,29 @@ public class BookService {
 	}
 	
 	
+	/*
+	 * case 4 --> show all books
+	 */
+	public void showAllBooks(Connection showAllBookCon) {
+		BookDao bd=new BookDao();
+		// return type of getAllBooks is list.
+		List<Book> showAllBook=bd.getAllBooks(showAllBookCon);
+		
+		//header
+		System.out.println("+------------+--------------------+--------------------+");
+		System.out.println("|  Book s_no |        Name        |   Author name      |");
+		System.out.println("+------------+--------------------+--------------------+");
+		
+		//ithu array la iruku so use foreach loop
+		for(Book b:showAllBook) {
+			
+			//format -> give 12 empty space 
+			System.out.printf("| %-10s | %-18s | %-18s | \n",b.getSerialNo(),b.getBookName(),b.getAuthorName());
+			System.out.println("+------------+--------------------+--------------------+");
+
+			
+		}
+	}
 	
 	
 }

@@ -1,0 +1,84 @@
+/*
+login table
+*/
+CREATE TABLE login(
+id SERIAL PRIMARY KEY,
+user_name VARCHAR(100) NOT NULL,
+PASSWORD VARCHAR(100) NOT NULL,
+user_type VARCHAR(100) NOT NULL
+);
+
+INSERT INTO login(user_name,PASSWORD,user_type)
+VALUES('admin','admin','admin'),
+		('user','user','user');
+
+
+SELECT * FROM login;
+
+
+
+
+/*
+book table
+*/
+CREATE TABLE books(
+id SERIAL NOT NULL,
+s_no INT NOT NULL,
+NAME VARCHAR(100) NOT NULL,
+author_name VARCHAR(100) NOT NULL,
+quantity INT,
+PRIMARY KEY(id)
+);
+
+/* --> for initil test
+INSERT INTO books(s_no,NAME,author_name,quantity)
+VALUES(1,'test','test',2);
+*/
+SELECT * FROM books;
+
+DROP TABLE books;
+
+DELETE FROM books WHERE id=5  ;
+
+
+
+
+
+
+
+
+
+
+
+/*
+student table
+*/
+CREATE TABLE students(
+id SERIAL NOT NULL,
+stu_name VARCHAR(100) NOT NULL,
+reg_no VARCHAR(100) NOT NULL,
+PRIMARY KEY(id)
+);
+
+SELECT * FROM students;
+
+
+/*
+booking details
+*/
+CREATE TABLE booking_details(
+id SERIAL NOT NULL,
+stu_id INT NOT NULL,
+book_id INT NOT NULL,
+quantity INT NOT NULL,
+PRIMARY KEY(id),
+FOREIGN KEY(stu_id) REFERENCES students (id),
+FOREIGN KEY(book_id) REFERENCES books(id)
+);
+
+
+SELECT * FROM booking_details;
+
+
+
+
