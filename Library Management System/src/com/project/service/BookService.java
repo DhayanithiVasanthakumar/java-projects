@@ -56,4 +56,46 @@ public class BookService {
 		}
 		
 	}
+	
+	
+	
+
+	/*
+	 * case 1: -> search book option
+	 */
+	
+	public void searchBook(Connection searchBookCon) {
+		BookService bs=new BookService();
+		
+		
+		
+		System.out.println("1.Search with Book serial No: ");
+		System.out.println("2.Search with Book author Name: ");
+		
+		System.out.println("Please enter your choice");
+		int choice=in.nextInt();
+		
+		switch(choice) {
+		case 1:
+			//
+			bs.searchBySerialNo(searchBookCon);
+			break;
+		case 2:
+			//
+			bs.searchByAuthorName(searchBookCon);
+			break;
+		default:
+			System.out.println("Enter valid choice");
+			break;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
