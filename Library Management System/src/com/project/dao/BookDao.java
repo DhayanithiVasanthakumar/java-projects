@@ -236,7 +236,29 @@ public class BookDao {
 	//........................................................................................
 
 	
+	/*
+	 * upgrade the book quantity
+	 */
 	
+	public void upgradeQuantity(Connection upgradeQuantityCon,Book updateBookObj) {
+		String query="UPDATE books SET quantity=? WHERE s_no=?";
+		
+		try(PreparedStatement pst=upgradeQuantityCon.prepareStatement(query)){
+			pst.setInt(1, updateBookObj.getQuantity());
+			pst.setInt(2, updateBookObj.getSerialNo());
+			
+			int row=pst.executeUpdate();
+			
+			if(row>0) {
+				System.out.println("Book updated Sucessfully");
+			}else {
+				System.out.println("Failed to update book");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

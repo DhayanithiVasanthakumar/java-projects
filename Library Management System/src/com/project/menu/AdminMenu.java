@@ -44,7 +44,7 @@ public class AdminMenu {
 			break;
 		case 3:
 			//Upgrade Quantity of Book
-			
+			bookServiceObj.updateBookQuantity(adminCon);
 			break;
 		case 4:
 			//Show All Books

@@ -170,6 +170,42 @@ public class BookService {
 	
 	
 	
+	/*
+	 * case 3 -> update book
+	 */
+	
+	
+	public void updateBookQuantity(Connection addBookCon) {
+
+		
+		System.out.println("Enter sno of book");
+		int sno=in.nextInt();
+		
+		
+		BookDao bd=new BookDao();
+		//bd obj Return Book class 
+		Book book=bd.getBookBySerialNo(addBookCon, sno);
+		
+		if(book == null) {
+			System.out.println("Book not available");
+			return;
+		}
+		
+		System.out.println("Enter number of books to be Added");
+		int quantity=in.nextInt();
+		
+		
+		
+			Book bookInput=new Book();
+			bookInput.setSerialNo(book.getSerialNo()+quantity);
+			bookInput.setQuantity(book.getQuantity());
+			
+			bd.upgradeQuantity(addBookCon, bookInput);
+			
+		
+	}
+	
+	
 	
 	
 }
