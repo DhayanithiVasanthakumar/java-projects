@@ -20,10 +20,10 @@ public class LoginService {
 		System.out.println("please provide password");
 		String password=in.nextLine();
 		
-		try(Connection con=DatabaseConnection.getConnection()) {
+		try(Connection loginServicecon=DatabaseConnection.getConnection()) {
 			
 			LoginDao logindao=new LoginDao();
-			String userType=logindao.doLogin(con, userName, password);
+			String userType=logindao.doLogin(loginServicecon, userName, password);
 			
 			if(userName==null) {
 				System.out.println("invalid user");
@@ -38,7 +38,7 @@ public class LoginService {
 				 * display admin related menu
 				 */
 				AdminMenu am=new AdminMenu();
-				am.displayAdminMenu(con);
+				am.displayAdminMenu(loginServicecon);
 				
 				
 				

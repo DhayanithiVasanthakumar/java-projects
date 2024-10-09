@@ -13,12 +13,12 @@ public class BookService {
 	/*
 	 * for search by serial no
 	 */
-	public void searchBySerialNo(Connection con) {
+	public void searchBySerialNo(Connection searchBookSerialCon) {
 		System.out.println("Enter serial no of Book:");
 		int serialNo=in.nextInt();
 		
 		BookDao bd=new BookDao();
-		Book bookDetails=bd.getBookBySerialNo(con, serialNo);
+		Book bookDetails=bd.getBookBySerialNo(searchBookSerialCon, serialNo);
 		
 		if(bookDetails != null) {
 			System.out.println("*****Book details*****");
@@ -37,12 +37,12 @@ public class BookService {
 	/*
 	 * for search by author name
 	 */
-	public void searchByAuthorName(Connection con) {
+	public void searchByAuthorName(Connection searchBookAuthorCon) {
 		System.out.println("Enter author name of Book:");
 		String authorName=in.nextLine();
 		
 		BookDao bd=new BookDao();
-		Book bookDetails=bd.getBookByAuthorName(con, authorName);
+		Book bookDetails=bd.getBookByAuthorName(searchBookAuthorCon, authorName);
 		
 		if(bookDetails != null) {
 			System.out.println("*****Book details*****");

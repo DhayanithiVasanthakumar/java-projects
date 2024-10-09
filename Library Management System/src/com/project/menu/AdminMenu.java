@@ -8,7 +8,7 @@ import com.project.dao.*;
 
 public class AdminMenu {
 	Scanner in;
-	public void displayAdminMenu(Connection con) {
+	public void displayAdminMenu(Connection adminCon) {
 		in=new Scanner(System.in);
 		int choice;
 		do {
@@ -30,7 +30,7 @@ public class AdminMenu {
 		switch(choice) {
 		case 1:
 			//search the book
-			searchBook(con);
+			searchBook(adminCon);
 			break;
 		case 2:
 			//Add new Book
@@ -66,7 +66,7 @@ public class AdminMenu {
 	 * case 1: -> search book option
 	 */
 	
-	private void searchBook(Connection con) {
+	private void searchBook(Connection searchBookCon) {
 		BookService bs=new BookService();
 		
 		
@@ -80,11 +80,11 @@ public class AdminMenu {
 		switch(choice) {
 		case 1:
 			//
-			bs.searchBySerialNo(con);
+			bs.searchBySerialNo(searchBookCon);
 			break;
 		case 2:
 			//
-			bs.searchByAuthorName(con);
+			bs.searchByAuthorName(searchBookCon);
 			break;
 		default:
 			System.out.println("Enter valid choice");
