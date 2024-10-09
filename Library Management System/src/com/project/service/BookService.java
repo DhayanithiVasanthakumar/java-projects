@@ -92,8 +92,55 @@ public class BookService {
 	
 	
 	
-	
-	
+	/*
+	 * case 2 -> add book
+	 * 
+	 * CREATE TABLE books(
+		id SERIAL NOT NULL,  --> it is auto increment ,so no need to get input
+		s_no INT NOT NULL,
+		NAME VARCHAR(100) NOT NULL,
+		author_name VARCHAR(100) NOT NULL,
+		quantity INT,
+		PRIMARY KEY(id)
+		);
+	 * 
+	 */
+	public void addBook(Connection addBookCon) {
+		
+		
+		//id SERIAL NOT NULL,  --> it is auto increment ,so no need to get input
+		
+		System.out.println("Enter sno of book");
+		int sno=in.nextInt();
+		
+		System.out.println("Enter Name of Book:");
+		String bookName=in.next();
+		
+		System.out.println("Enter Name of Author:");
+		String authorName=in.next();
+		
+		System.out.println("Enter quantity of book");
+		int quantity=in.nextInt();
+		
+		
+		BookDao bd=new BookDao();
+		//bd obj Return Book class 
+		Book book=bd.getBookBySerialNoOrAuthorName(addBookCon, sno, authorName);
+		
+		if(book != null) {
+			System.out.println("Book already exists,So please try with diffrent Book");
+			return;
+		}
+			Book bookInput=new Book();
+			bookInput.setSerialNo(sno);
+			bookInput.setBookName(bookName);
+			bookInput.setAuthorName(authorName);
+			bookInput.setQuantity(quantity);
+			
+			bd.saveBook(addBookCon, bookInput);
+			
+		
+	}
 	
 	
 	

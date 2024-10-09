@@ -40,7 +40,7 @@ public class AdminMenu {
 			break;
 		case 2:
 			//Add new Book
-			
+			bookServiceObj.addBook(adminCon);
 			break;
 		case 3:
 			//Upgrade Quantity of Book
