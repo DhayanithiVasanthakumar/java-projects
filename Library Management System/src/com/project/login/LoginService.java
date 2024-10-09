@@ -1,12 +1,13 @@
 package com.project.login;
 
 import java.sql.Connection;
-import java.sql.SQLDataException;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.project.dao.DatabaseConnection;
 import com.project.dao.LoginDao;
+import com.project.menu.*;
 
 public class LoginService {
 
@@ -36,6 +37,8 @@ public class LoginService {
 				/*
 				 * display admin related menu
 				 */
+				AdminMenu am=new AdminMenu();
+				am.displayAdminMenu(con);
 				
 				
 				
@@ -49,4 +52,5 @@ public class LoginService {
 			e.printStackTrace();
 		}
 	}
+
 }
