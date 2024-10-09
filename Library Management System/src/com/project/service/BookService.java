@@ -197,8 +197,8 @@ public class BookService {
 		
 		
 			Book bookInput=new Book();
-			bookInput.setSerialNo(book.getSerialNo()+quantity);
-			bookInput.setQuantity(book.getQuantity());
+			bookInput.setSerialNo(book.getSerialNo());
+			bookInput.setQuantity(book.getQuantity()+quantity);
 			
 			bd.upgradeQuantity(addBookCon, bookInput);
 			
