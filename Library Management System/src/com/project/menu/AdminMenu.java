@@ -76,9 +76,5 @@ public class AdminMenu {
 		}
 		}while(choice != 8);
 	}
-	
-	
-	
-	
-	
+
 }
