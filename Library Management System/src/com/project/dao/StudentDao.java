@@ -37,6 +37,35 @@ public class StudentDao {
 		
 		//................................................................................
 		
+		public int getStudentByRegNoForCheckOutBook(Connection con,String regNo) {
+			String query="SELECT * FROM students WHERE reg_no=?";
+			
+			try(PreparedStatement pst=con.prepareStatement(query)){
+				
+				pst.setString(1, regNo);
+				
+				/*
+				 * automatic ah close aagarathuku ReseltSet ah nested try la podarom
+				 */
+				try(ResultSet rs=pst.executeQuery()){
+					if( rs.next()){
+						rs.getInt(1);
+					}
+					
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return 0 ;
+		
+		}
+		
+		
+		
+		
+		//................................................................................
+		
 		
 		
 		
@@ -115,7 +144,44 @@ public class StudentDao {
 		
 		//........................................................................................
 
-		
+		/*
+		 * save booking details
+		 * 
+		 * CREATE TABLE booking_details(
+		id SERIAL NOT NULL,
+		stu_id INT NOT NULL,
+		book_id INT NOT NULL,
+		quantity INT NOT NULL,
+		PRIMARY KEY(id),
+		FOREIGN KEY(stu_id) REFERENCES students (id),
+		FOREIGN KEY(book_id) REFERENCES books(id)
+		);
+		 */
+		public void saveBookingdetails(Connection saveBookingDetailsCon,int stuID,int bookID,int quantity) {
+			String query="INSERT INTO booking_details(stu_id,book_id,quantity) VALUES(?,?,?)";
+			
+			try(PreparedStatement pst=saveBookingDetailsCon.prepareStatement(query)){
+				
+				pst.setInt(1, stuID);
+				pst.setInt(2, bookID);
+				pst.setInt(3, quantity);
+				
+				int rows=pst.executeUpdate();
+				
+				if(rows > 0) {
+					System.out.println("Book details added sucessfully");
+				}
+				else {
+					System.out.println("Failed to add book details");
+				}
+				
+				
+			} catch (SQLException e) {
+			
+				e.printStackTrace();
+			}
+			
+		}
 		
 		//........................................................................................
 

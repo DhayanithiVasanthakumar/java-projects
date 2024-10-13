@@ -12,7 +12,7 @@ public class UserMenu {
 	BookService bookServiceObj=new BookService();
 	StudentService studentServiceObj=new StudentService();
 	
-	public void displayUserMenu(Connection adminCon) {
+	public void displayUserMenu(Connection userCon) {
 		in=new Scanner(System.in);
 		int choice;
 		do {
@@ -35,12 +35,12 @@ public class UserMenu {
 		 * case 1,2,3,4 -> BookService class
 		 */
 		case 1:
-			//search the book
-			bookServiceObj.searchBook(adminCon);
+			//search the book from library
+			bookServiceObj.searchBook(userCon);
 			break;
 		case 2:
-			//Add new Book
-//			bookServiceObj.addBook(adminCon);
+			//get book from library
+			bookServiceObj.checkOutBook(userCon);
 			break;
 		case 3:
 			//delete book

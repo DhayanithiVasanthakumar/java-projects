@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.project.dao.BookDao;
+import com.project.dao.StudentDao;
 import com.project.dto.Book;
 
 public class BookService {
@@ -335,8 +336,54 @@ public class BookService {
 	
 	
 //--------------------------------------------------------------------------------------------------
+	/*
+	 * check out book
+	 */
+	public void checkOutBook(Connection checkOutBookCon) {
 
-	
+		StudentDao sd = new StudentDao();
+		BookDao bd = new BookDao();
+
+		System.out.println("Enter register Nunber: ");
+		String regNo = in.nextLine();
+
+		boolean isExist = sd.getStudentByRegNo(checkOutBookCon, regNo);
+
+		if (!isExist) {
+			System.out.println("Student is not registered!,Get Registered first...");
+			return;
+		}
+
+		showAllBooks(checkOutBookCon);
+
+		System.out.println("Enter the Serial no of Book to check out");
+		int sno = in.nextInt();
+
+		// ithu Book ah return panu
+		Book book = bd.getBookBySerialNo(checkOutBookCon, sno);
+
+		if (book == null) {
+			System.out.println("Book is not available");
+			return;
+		}
+
+		// we need to update book quantity
+		book.setQuantity(book.getQuantity() - 1);
+
+		int id = sd.getStudentByRegNoForCheckOutBook(checkOutBookCon, regNo);
+
+//public void saveBookingdetails(Connection saveBookingDetailsCon,int stuID,int bookID,int quantity)
+
+		/*
+		 * quantity is default ( 1 )-> because taking only one at a time.
+		 */
+
+		sd.saveBookingdetails(checkOutBookCon, id, book.getId(), 1);
+
+		bd.upgradeQuantity(checkOutBookCon, book);
+
+	}
+
 //--------------------------------------------------------------------------------------------------
 
 	
