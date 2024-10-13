@@ -73,52 +73,44 @@ public class StudentDao {
 		 * show all books
 		 */
 		
-		public List<Book> getAllBooks(Connection con) {
-			String query="SELECT * FROM books";
-			
-			List<Book> bookList=new ArrayList<>();
-			
-			try(PreparedStatement pst=con.prepareStatement(query)){
-				
+		public void getAllStudents(Connection con) {
+			String query = "SELECT * FROM students";
+
+			// header
+			System.out.println("+------------+--------------------+--------------------+");
+			System.out.println("|    id      |        Name        |   regesiterNumber  |");
+			System.out.println("+------------+--------------------+--------------------+");
+
+			try (PreparedStatement pst = con.prepareStatement(query)) {
+
 				/*
 				 * automatic ah close aagarathuku ReseltSet ah nested try la podarom
 				 */
-				try(ResultSet rs=pst.executeQuery()){
-					//ula yetho value iruntha maatum tha ula enter aagu
-					
+				try (ResultSet rs = pst.executeQuery()) {
+					// ula yetho value iruntha maatum tha ula enter aagu
+
 					/*
-					 * instead of using if use while because ,if we use"if" it will return only one data
-					 * but if we use "while" it will return  multiple data ->data irukara varaikum show aagum
+					 * instead of using if use while because ,if we use"if" it will return only one
+					 * data but if we use "while" it will return multiple data ->data irukara
+					 * varaikum show aagum
 					 */
-					while(rs.next()) {
-						Book book=new Book();
-						/*
-						 * in book table 
-						 * CREATE TABLE books(
-						 *  id SERIAL NOT NULL,
-						 *  s_no INT NOT NULL, 
-						 *  NAME VARCHAR(100) NOT NULL,
-						 *  author_name VARCHAR(100) NOT NULL,
-						 *   quantity INT,
-						 * PRIMARY KEY(id) );
-						 */
-						// it all represents above table in db
-						book.setAuthorName(rs.getString("author_name"));
-						book.setBookName(rs.getString("NAME"));
-						book.setId(rs.getInt("id"));
-						book.setQuantity(rs.getInt("quantity"));
-						book.setSerialNo(rs.getInt("s_no"));
-						
-						bookList.add(book);
+
+					// ithu array la iruku so use foreach loop
+					while (rs.next()) {
+
+						// format -> give 12 empty space
+						System.out.printf("| %-10s | %-18s | %-18s | \n", rs.getInt(1), rs.getString(2),
+								rs.getString(3));
+						System.out.println("+------------+--------------------+--------------------+");
+
 					}
-					
+
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return bookList;
+
 		}
-		
 		
 		
 		//........................................................................................

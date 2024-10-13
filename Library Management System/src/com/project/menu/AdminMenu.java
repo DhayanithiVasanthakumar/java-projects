@@ -64,7 +64,7 @@ public class AdminMenu {
 			break;
 		case 7:
 			//Show All Registered Students
-			
+			studentServiceObj.showAllStudents(adminCon);
 			break;
 		case 8:
 			//Exit From Application

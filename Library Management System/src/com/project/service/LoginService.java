@@ -30,7 +30,7 @@ public class LoginService {
 				return;
 			}
 			
-			System.out.println("Login sucess. you logged in as a  "+userType+"  Please Select from bello options");
+			System.out.println("Login sucess. you logged in as a  "+userType+"  Please Select from below options");
 			
 			
 			if(userName.equals("admin")) {
@@ -46,6 +46,8 @@ public class LoginService {
 				/*
 				 * display student related menu
 				 */
+				UserMenu um=new UserMenu();
+				um.displayUserMenu(loginServicecon);
 			}
 			
 		}catch(SQLException e) {

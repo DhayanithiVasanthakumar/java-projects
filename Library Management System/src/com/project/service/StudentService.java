@@ -50,16 +50,14 @@ public class StudentService {
 		
 		
 		/*
-		 *  add book
+		 *  add student
 		 * 
-		 * CREATE TABLE books(
-			id SERIAL NOT NULL,  --> it is auto increment ,so no need to get input
-			s_no INT NOT NULL,
-			NAME VARCHAR(100) NOT NULL,
-			author_name VARCHAR(100) NOT NULL,
-			quantity INT,
-			PRIMARY KEY(id)
-			);
+		 * CREATE TABLE students(
+		id SERIAL NOT NULL,
+		stu_name VARCHAR(100) NOT NULL,
+		reg_no VARCHAR(100) NOT NULL,
+		PRIMARY KEY(id)
+		);
 		 * 
 		 */
 		public void addStudent(Connection addStudentCon) {
@@ -90,27 +88,12 @@ public class StudentService {
 	//--------------------------------------------------------------------------------------------------	
 		
 		/*
-		 * --> show all books
+		 * --> show all students
 		 */
-		public void showAllBooks(Connection showAllBookCon) {
-			BookDao bd=new BookDao();
-			// return type of getAllBooks is list.
-			List<Book> showAllBook=bd.getAllBooks(showAllBookCon);
+		public void showAllStudents(Connection showAllStudentCon) {
 			
-			//header
-			System.out.println("+------------+--------------------+--------------------+------------+");
-			System.out.println("|  Book s_no |        Name        |   Author name      |  Quantity  |");
-			System.out.println("+------------+--------------------+--------------------+------------+");
-			
-			//ithu array la iruku so use foreach loop
-			for(Book b:showAllBook) {
-				
-				//format -> give 12 empty space 
-				System.out.printf("| %-10s | %-18s | %-18s | %-10s | \n",b.getSerialNo(),b.getBookName(),b.getAuthorName(),b.getQuantity());
-				System.out.println("+------------+--------------------+--------------------+------------+");
-
-				
-			}
+			StudentDao sd=new StudentDao();
+			sd.getAllStudents(showAllStudentCon);
 		}
 	//--------------------------------------------------------------------------------------------------	
 
