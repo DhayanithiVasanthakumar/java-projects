@@ -37,30 +37,43 @@ public class StudentDao {
 		
 		//................................................................................
 		
-		public int getStudentByRegNoForCheckOutBook(Connection con,String regNo) {
-			String query="SELECT * FROM students WHERE reg_no=?";
-			
-			try(PreparedStatement pst=con.prepareStatement(query)){
-				
+		public int getStudentByRegNoForCheckOutBook(Connection con, String regNo) {
+			String query = "SELECT * FROM students WHERE reg_no=?";
+
+			int id = 0;
+			try (PreparedStatement pst = con.prepareStatement(query)) {
+
 				pst.setString(1, regNo);
-				
+
 				/*
 				 * automatic ah close aagarathuku ReseltSet ah nested try la podarom
 				 */
-				try(ResultSet rs=pst.executeQuery()){
-					if( rs.next()){
-						rs.getInt(1);
+				try (ResultSet rs = pst.executeQuery()) {
+					if (rs.next()) {
+
+						/*
+						 * //return 0 kudutha 0 tha return aagu so athuku bathil ah id ah return pana
+						 * antha id return aagum. return id ;
+						 */
+
+						// before -> it is wrong
+						//rs.getInt(1);
+						
+						//after -> it return id so it is correct
+						id = rs.getInt("id");
 					}
-					
-					
+
 				}
 			} catch (SQLException e) {
+				// alla place la yum printStackTrace() kudukarathuku bathil ah
+				// throw new ... ipadi kudukanu
 				e.printStackTrace();
 			}
-			return 0 ;
-		
+			// return 0 kudutha 0 tha return aagu so athuku bathil ah id ah return pana
+			// antha id return aagum.
+			return id;
+
 		}
-		
 		
 		
 		
