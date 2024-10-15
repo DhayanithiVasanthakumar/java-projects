@@ -44,7 +44,7 @@ public class UserMenu {
 			break;
 		case 3:
 			//delete book
-//			bookServiceObj.deleteBook(adminCon);
+			bookServiceObj.checkInBook(userCon);
 			break;
 			
 		case 4:

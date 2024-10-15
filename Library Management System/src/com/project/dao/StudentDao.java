@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.project.dto.Book;
+import com.project.dto.BookingDetails;
 
 public class StudentDao {
 
@@ -199,6 +200,57 @@ public class StudentDao {
 		//........................................................................................
 
 		
+		public List<BookingDetails> getBookdetailsById(Connection getBookdetailsByIdCon,int stuId){
+			
+			BookingDetails bookingDetail=new BookingDetails();
+			
+			String query="SELECT * FROM booking_details bd INNER JOIN books b ON b.id=bd.book_id  WHERE bd.stu_id=?";
+						
+			
+			List<BookingDetails> bookingdetailList=new ArrayList<>();
+			
+			try(PreparedStatement pst=getBookdetailsByIdCon.prepareStatement(query);) {
+				
+				pst.setInt(1, stuId);
+				
+				ResultSet rs=pst.executeQuery();
+				
+				while(rs.next()) {
+					
+					bookingDetail.setBookingDetailsAuthorName(rs.getString("author_name"));
+					bookingDetail.setBookingDetailsBookId(rs.getInt("book_id"));
+					bookingDetail.setBookingDetailsBookName(rs.getString("NAME"));
+					bookingDetail.setBookingDetailsQuantity(rs.getInt("quantity"));
+					bookingDetail.setBookingDetailsSerialNo(rs.getInt("s_no"));
+					bookingDetail.setBookingDetailsStuId(rs.getInt("s_id"));
+					bookingDetail.setBookingDetailsId(rs.getInt("id"));
+					
+					bookingdetailList.add(bookingDetail);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return bookingdetailList;
+			
+			
+		}
+		
 		//........................................................................................
 
+		public void deleteBookingDetails(Connection deleteBookingDetailsCon,int id) {
+			
+			
+			String query="DELETE booking_details WHERE id=?";
+			
+			try(PreparedStatement pst=deleteBookingDetailsCon.prepareStatement(query);) {
+				
+				pst.setInt(1, id);
+				pst.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+					
+			
+		}
 }

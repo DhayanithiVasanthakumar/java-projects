@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.project.dao.BookDao;
 import com.project.dao.StudentDao;
 import com.project.dto.Book;
+import com.project.dto.BookingDetails;
 
 public class BookService {
 
@@ -386,5 +387,37 @@ public class BookService {
 
 //--------------------------------------------------------------------------------------------------
 
+	public void checkInBook(Connection checkInBookCon) {
+		System.out.println("Enter register number: ");
+		String regNo=in.next();
+		
+		StudentDao sd=new StudentDao();
+		boolean isExist=sd.getStudentByRegNo(checkInBookCon, regNo);
+		
+		if(isExist) {
+			System.out.println("Student not registered! Get registered first...");
+			return;
+		}
+		
+		int id=sd.getStudentByRegNoForCheckOutBook(checkInBookCon, regNo);
+		List<BookingDetails>bookingDetails=sd.getBookdetailsById(checkInBookCon, id);
+		
+		bookingDetails.stream().forEach(b -> System.out.println(b .serialNo+"\t\t\t"+b.bookName+"\t\t\t"+b.authorName));
+		
+		System.out.println("Enter Serial no of book to be Checked In: ");
+		int sNo=in.nextInt();
+		
+		BookingDetails filterDetails=bookingDetails.stream().filter(b -> b.serialNo ==sNo).findAny().orElse(null);
+		
+		BookDao bd=new BookDao();
+		Book book=bd.getBookBySerialNo(checkInBookCon, sNo);
+		
+		book.setQuantity(book.getQuantity() + 1);
+		
+		bd.upgradeQuantity(checkInBookCon, book);
+		
+		
+		bd.deleteBook(checkInBookCon,filterDetails.getBookingDetailsBookId());
+	}
 	
 }
