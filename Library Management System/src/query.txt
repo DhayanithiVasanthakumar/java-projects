@@ -30,12 +30,13 @@ quantity INT,
 PRIMARY KEY(id)
 );
 
-/* --> for initil test
-INSERT INTO books(s_no,NAME,author_name,quantity)
-VALUES(1,'test','test',2);
-*/
+--INSERT INTO books(id,s_no,NAME,author_name,quantity)VALUES(1,1,'test','test',2);
+
+
 SELECT * FROM books;
 
+
+DROP TABLE books CASCADE;
 
 
 
@@ -49,7 +50,14 @@ reg_no VARCHAR(100) NOT NULL,
 PRIMARY KEY(id)
 );
 
+-- set default , for to handle exception 
+--INSERT INTO students(id,stu_name,reg_no)VALUES(1,'test','test');
+
+
 SELECT * FROM students;
+
+
+DROP TABLE students CASCADE;
 
 
 /*
@@ -61,7 +69,7 @@ stu_id INT NOT NULL,
 book_id INT NOT NULL,
 quantity INT NOT NULL,
 PRIMARY KEY(id),
-FOREIGN KEY(stu_id) REFERENCES students (id),
+FOREIGN KEY(stu_id) REFERENCES students(id),
 FOREIGN KEY(book_id) REFERENCES books(id)
 );
 
@@ -69,5 +77,6 @@ FOREIGN KEY(book_id) REFERENCES books(id)
 SELECT * FROM booking_details;
 
 
+DROP TABLE booking_details;
 
 
