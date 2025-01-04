@@ -1,7 +1,7 @@
 package com.project.dto;
 
 import java.util.ArrayList;
-
+//1
 public class Movie {
 
 	private int id;
