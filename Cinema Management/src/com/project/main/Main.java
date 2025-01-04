@@ -57,7 +57,6 @@ public class Main {
 					System.out.println("Confirm Password");
 					 confirmPass=in.next();
 				}
-				
 			}
 }
 
