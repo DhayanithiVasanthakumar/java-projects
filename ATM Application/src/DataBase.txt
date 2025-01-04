@@ -3,4 +3,5 @@ cust_id INT ,
 cust_balance BIGINT
 );
 
+
 SELECT * FROM transaction_details;
