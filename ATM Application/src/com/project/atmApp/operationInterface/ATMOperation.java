@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.project.atmApp.atm.ATM;
 import com.project.atmApp.database.DataBaseConnection;
+import com.project.atmApp.dto.ATM;
 
 public class ATMOperation implements ATMOperationInterface {
 

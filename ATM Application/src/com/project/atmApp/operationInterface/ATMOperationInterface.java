@@ -1,6 +1,5 @@
 package com.project.atmApp.operationInterface;
 
-import com.project.atmApp.atm.ATM;
 
 public interface ATMOperationInterface {
 
@@ -11,13 +10,6 @@ public interface ATMOperationInterface {
 	public void depositAmount(double depositAmount);
 
 	public void viewMiniStatement();
-	
-	
-	
-	
-	
-	
-	
 
 	public boolean insertCustomerID(int addCusID);
 

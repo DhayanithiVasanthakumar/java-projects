@@ -1,4 +1,4 @@
-package com.project.atmApp.atm;
+package com.project.atmApp.dto;
 
 public class ATM {
 
@@ -65,6 +65,11 @@ public class ATM {
 
 	public void setWithDrawAmount(double withdrawAmount) {
 		this.withdrawAmount = withdrawAmount;
+	}
+	
+	public String toString() {
+		return "Customer ID: "+cusID+
+				"Balance: "+balance;
 	}
 
 }

@@ -8,6 +8,8 @@ import com.project.atmApp.operationInterface.ATMOperationInterface;
 
 public class Main {
 
+	private static Scanner input;
+	
 	public static void main(String[] args) {
 
 		/*
@@ -18,10 +20,11 @@ public class Main {
 		int atmNum = 1;
 		int pin = 1;
 
-		Scanner input = new Scanner(System.in);
+		 input = new Scanner(System.in);
 
 		System.out.println("Welcome to ATM mechine");
 
+		
 		System.out.print("Enter ATM number: ");
 		int atmNumber = input.nextInt();
 
@@ -78,26 +81,7 @@ public class Main {
 				 * try switch case insted of using if else
 				 */
 				if (choice == 1) {
-					
-					
-					
-					
-					
-					
-					
 					op.viewBalance();
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 				} else if (choice == 2) {
 					System.out.println("Enter amount to deposit: ");
 					double depositInput = input.nextDouble();
